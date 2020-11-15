@@ -1,0 +1,60 @@
+
+<h3>Filtrar por Via:</h3>
+  <div class="flex-row">
+  <div  class="flex-row" *ngFor="let via of ViaList">
+    <button mat-raised-button (click)="FilterSpellListByVia(via)">{{via}}</button>
+  </div>
+</div>
+
+<br><br>
+<h3>Resultado:</h3>
+
+<mat-accordion class="example-headers-align" multi>
+  <div *ngFor="let spell of spellListFilter | slice: lowValue : highValue">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         <p> {{spell.Nombre}}</p>
+        </mat-panel-title>
+        <mat-panel-description>
+          Via: {{spell.Via}} | Nivel: {{spell.Nivel}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!--CONTENIDO-->
+      <b>Acción:</b> {{spell.Accion}}
+      <b>Tipo:</b> {{spell.Tipo}}<br>
+      <b>Efecto:</b><br> {{spell.Efecto}}
+      <br><br><br>
+      <table mat-table [dataSource]="spell.Grado" class="mat-elevation-z8">
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"> <b>{{element.Name}}</b> </td>
+        </ng-container>
+        <ng-container matColumnDef="Coste">
+          <th mat-header-cell *matHeaderCellDef> Coste </th>
+          <td mat-cell *matCellDef="let element"> {{element.Coste}} </td>
+        </ng-container>
+        <ng-container matColumnDef="IntR">
+          <th mat-header-cell *matHeaderCellDef> Int R </th>
+          <td mat-cell *matCellDef="let element"> {{element.IntR}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Mantenimiento">
+          <th mat-header-cell *matHeaderCellDef> Mantenimiento {{spell.mantenimiento === 'Diario' ? '(Diario)' : ''}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.CosteMantenimiento === 0 ? '-' : element.CosteMantenimiento}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Efecto">
+          <th mat-header-cell *matHeaderCellDef> Efecto </th>
+          <td mat-cell *matCellDef="let element"> {{element.Efecto}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>
+
+<mat-paginator #paginator [length]="spellListFilter.length" [pageSize]="pageSize" 
+   (page)="pageEvent = getPaginatorData($event)">
+</mat-paginator> 

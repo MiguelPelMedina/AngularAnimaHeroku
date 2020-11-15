@@ -1,0 +1,15 @@
+.mat-raised-button {
+  display: inline-block;
+
+}
+table {
+  width: 100%;
+}
+.mat-expansion-panel{
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto
+}
+.flex-row {
+  display: inline;
+}
