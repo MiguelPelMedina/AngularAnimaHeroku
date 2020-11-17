@@ -14,7 +14,8 @@ export class SpellListComponent implements OnInit {
   spellList = []
   spellListFilter = []
   displayedColumns: string[] = ["Name","Coste","IntR","Mantenimiento","Efecto"]
-  ViaList: string[] = ["Luz","Oscuridad","Fuego","Agua","Aire","Tierra","Ilusión","Creación","Esencia","Destrucción","Nigromancia","Libre Acceso"]
+  ViaList: string[] = ["Luz","Oscuridad","Fuego","Agua","Aire","Tierra","Ilusión","Creación","Esencia","Destrucción","Nigromancia","Libre Acceso"
+                      ,"Caos","Guerra","Literae","Muerte","Música","Nobleza","Paz","Pecado","Conocimiento","Sangre","Sueños","Tiempo","Umbral","Vacío"]
   index = 0
   //Paginator
   pageIndex:number = 0;
