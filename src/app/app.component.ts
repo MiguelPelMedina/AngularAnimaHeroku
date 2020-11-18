@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AnimaSpellSearch';
+  version = "v1.1.0";
 }

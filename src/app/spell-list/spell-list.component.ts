@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Console, debug } from 'console';
 import { element } from 'protractor';
@@ -12,7 +12,7 @@ import { SpellService } from '../spell.service';
 })
 export class SpellListComponent implements OnInit {
   spellList = []
-  spellListFilter = []
+  @Input() spellListFilter = []
   displayedColumns: string[] = ["Name","Coste","IntR","Mantenimiento","Efecto"]
   ViaList: string[] = ["Luz","Oscuridad","Fuego","Agua","Aire","Tierra","Ilusión","Creación","Esencia","Destrucción","Nigromancia","Libre Acceso"
                       ,"Caos","Guerra","Literae","Muerte","Música","Nobleza","Paz","Pecado","Conocimiento","Sangre","Sueños","Tiempo","Umbral","Vacío"]
@@ -30,12 +30,6 @@ export class SpellListComponent implements OnInit {
 
 //-----------------------------------------
   ngOnInit(): void {
-
-    this.spellService.getSpells().subscribe(data => {
-      this.spellList = data;
-      this.spellListFilter = this.spellList.slice(0,30);
-      }
-      );
     
   }
   IncreaseIndex(){
@@ -43,17 +37,12 @@ export class SpellListComponent implements OnInit {
     if(this.index * 30 > this.spellList.length ) this.index = 0;
     this.spellListFilter = this.spellList.slice(30 * this.index , Math.min(30*(this.index + 1),this.spellList.length));
   }
-  FilterSpellListByVia(via: string){
-    console.log('filtrando por via: '+via);
-
+  ResetPaginator(){
     this.pageIndex = 0;
     this.pageSize = 20;
     this.lowValue = 0;
     this.highValue = 20;
     this.paginator.firstPage();
-    this.spellListFilter = this.spellList.filter((element) => {
-      return element.Via == via;
-    });
   }
 
   getPaginatorData(event):PageEvent{

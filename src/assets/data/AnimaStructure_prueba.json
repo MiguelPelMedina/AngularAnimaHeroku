@@ -1,4 +1,4 @@
-[{"_id":{"$oid":"5fb1a188aadb911ac06cc6e1"},"Nombre":"Crear Luz","Nivel":2,"Via":"Luz","Accion":"Activa ","Efecto":"Crea  una  fuente  de  luz  en  un  punto  u  objeto  determinado  por  el  hechicero.","Tipo":["Efecto"],"mantenimiento":"Diario","Grado":[{"Name":"Base","Coste":20,"IntR":5,"Efecto":"5 metros de zona iluminada.","CosteMantenimiento":5},{"Name":"Intermedio","Coste":50,"IntR":8,"Efecto":"25 metros de zona iluminada.","CosteMantenimiento":5},{"Name":"Avanzado","Coste":100,"IntR":10,"Efecto":"100 metros de zona iluminada.","CosteMantenimiento":10},{"Name":"Arcano","Coste":200,"IntR":12,"Efecto":"500 metros de zona iluminada.","CosteMantenimiento":15}]},
+[
   {
     "_id": {
       "$oid": "5fb1575a0ed30963a81d55f9"

@@ -1,0 +1,52 @@
+
+<mat-card>
+    <h1> Filter </h1>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="name">
+    </mat-form-field>
+    <br>
+    Nivel:
+    <br>  
+    <mat-form-field>
+        <mat-label>Min</mat-label>
+        <input matInput type="number" [(ngModel)]="nivelMinimo">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Max</mat-label>
+        <input matInput type="number" [(ngModel)]="nivelMaximo">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Ordenar por</mat-label>
+        <mat-select [(value)]="sortSelected">
+            <mat-option *ngFor="let option of sortByOptions"[value]="option"> {{option}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <!--Via-->
+    <mat-form-field style="width: 100%;">
+        <mat-chip-list #ViaChipList aria-label="Via selection" style="width: 100%;">
+            <mat-chip *ngFor= "let Via of viaList" [selectable]="viaSelectable" [removable]="viaRemovable" (removed)="removeVia(Via)">
+                {{Via}}
+                <mat-icon matChipRemove *ngIf="viaRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Via"
+            #ViaInput
+            [formControl]="viaCtrl"
+            [matAutocomplete]="viaAutocomplete"
+            [matChipInputFor]="ViaChipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="addVia($event)"
+            >
+        </mat-chip-list>
+        <mat-autocomplete #viaAutocomplete="matAutocomplete" (optionSelected)="selectedVia($event)">
+            <mat-option *ngFor="let Via of filteredVias | async" [value]="Via">
+                {{Via}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <b>Nota: </b> Si el input de Via y/o de nombre están vacios se obtienen todos los elementos ignorando la via y/ el nombre
+    <button mat-raised-button color="primary" style="margin: 0 auto;display: block;" (click)="filterSpells()">Filtrar</button>
+</mat-card>
+<app-spell-list #spellListComponent [spellListFilter]="filteredSpellList"></app-spell-list>
+
