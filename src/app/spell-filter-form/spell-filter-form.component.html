@@ -12,9 +12,21 @@
         <mat-label>Min</mat-label>
         <input matInput type="number" [(ngModel)]="nivelMinimo">
     </mat-form-field>
+
     <mat-form-field>
         <mat-label>Max</mat-label>
         <input matInput type="number" [(ngModel)]="nivelMaximo">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-select placeholder="Accion" [(value)] = "selectedAccionOptions" multiple>
+            <mat-option *ngFor="let accion of accionOptions" [value]="accion">{{accion}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Mantenimiento" [(value)] = "selectedMantenimientoOptions" multiple>
+            <mat-option *ngFor="let mantenimiento of mantenimientoOptions" [value]="mantenimiento">{{mantenimiento}}</mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Ordenar por</mat-label>

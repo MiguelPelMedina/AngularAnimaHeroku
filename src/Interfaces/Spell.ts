@@ -5,7 +5,7 @@ export interface ISpell{
     Accion: string,
     Efecto: string,
     Tipo: Array<string>,
-    Mantenimiento: string,
+    mantenimiento: string,
     Grado: Array<ISpellGrade>
 }
 

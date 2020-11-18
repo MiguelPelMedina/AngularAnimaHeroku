@@ -21486,7 +21486,7 @@
     "Nombre": "Crear Luz",
     "Nivel": 2,
     "Via": "Luz",
-    "Accion": "Activa ",
+    "Accion": "Activa",
     "Efecto": "Crea  una  fuente  de  luz  en  un  punto  u  objeto  determinado  por  el  hechicero.",
     "Tipo": [
       "Efecto"

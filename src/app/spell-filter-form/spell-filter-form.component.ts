@@ -26,6 +26,10 @@ export class SpellFilterFormComponent implements OnInit {
   nivelMaximo: number = 100;
   sortByOptions: string[] = ['Nombre', 'Nivel','Via'];
   sortSelected: string = 'Nivel';
+  mantenimientoOptions = ["sí","no","Diario"];
+  selectedMantenimientoOptions;
+  accionOptions = ["Activa", "Pasiva"];
+  selectedAccionOptions;
   //Elementos del filtro de Via
   viaSelectable = true;
   viaRemovable = true;
@@ -53,6 +57,8 @@ export class SpellFilterFormComponent implements OnInit {
       this.filterSpells();
       }
       );
+      this.selectedAccionOptions = this.accionOptions;
+      this.selectedMantenimientoOptions = this.mantenimientoOptions;
   }
   addVia(event: MatChipInputEvent): void{
     const input = event.input;
@@ -88,7 +94,9 @@ export class SpellFilterFormComponent implements OnInit {
       if(element.Nombre.includes(this.name) &&
         element.Nivel >= this.nivelMinimo &&
         element.Nivel <= this.nivelMaximo &&
-        (this.viaList.length === 0 || this.viaList.includes(element.Via))){
+        (this.viaList.length === 0 || this.viaList.includes(element.Via)) &&
+        this.selectedMantenimientoOptions.includes(element.mantenimiento) &&
+        this.selectedAccionOptions.includes(element.Accion)){
         return true;
       }
     }).sort((spell1: ISpell ,spell2:ISpell)=>{
